@@ -53,44 +53,75 @@ Side note: Good developers see this as an obvious implementation. We want our da
 
 
 Author proposed the trade.
+
 Receiver accepted the trade conditions.
 
 1.When author proposes a trade:
+
 ..1.It appears immediately on the trade marketplace.
+
 ..2.This part is weird. Ask questions if confusing.
 
 Inventory and money exchange does not occur immediately. Author must wait until a person on the marketplace accepts the trade. The first time an author returns to Marketplace after their trade has been accepted, the inventory and money exchange will adjust.
+
 When receiver accepts a trade:
+
 Send message box showing trade has been accepted.
+
 Adjust inventory and money exchange immediately.
+
 Close the trade.
+
 Task: Make POST request to server.
+
 Validation:
+
 Verify player selected a trade before clicking accept button.
+
 Verify player did not accept a trade they proposed. Can only accept trades from other players.
+
 Verify player did not accept a closed trade. Can only accept open trades.
+
 Verify player has enough resources to accept trade. If trade requests 3 strawberries, player must have at least 3 strawberries in their inventory.
 
-API
+### API
+
 Below is an explanation of the URLs, the http methods (e.g. POST or GET), and the variables we need to pass to the server.
 
+
 Chat messages - http://plantville.herokuapp.com/Links to an external site.
+
 GET retrieves last 100 chat messages in JSON.
+
 POST adds a new chat message.
 
 Returns last 100 chat messages after adding new chat message.
+
 username: the name of player sending chat message
+
 message: chat message
+
 Trades - http://plantville.herokuapp.com/tradesLinks to an external site. 
+
 GET retrieves last 100 trade proposals
+
 POST adds a new trade proposal.
 
 Returns the ID of the new trade. This is useful for tracking which trades are pending for authors waiting for their trade to be accepted.
+
 author: name of player sending trade proposal
+
 plant: name of plant player wants to buy
+
 quantity: amount of plan they want (e.g. 3 strawberries)
+
 price: price player willing to pay
+
 Accept trade - https://plantville.herokuapp.com/accept_tradeLinks to an external site.
+
 POST accepts the trade
+
 trade id: The ID given when adding a new trade proposal
+
 accepted_by: the name of player accepting trade proposal
+
